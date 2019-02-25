@@ -81,7 +81,28 @@ class DoublyLinkedList:
 
 
   def remove_from_tail(self):
-    pass
+    # If linked list is empty return None.
+    if not self.head:
+      return None
+    # If only one element in the linked list (e.g. self.head.next == None).
+    elif not self.head.next:
+      # Grab a second reference to our current tail element 
+      tail = self.tail
+      # Set head and tail to None to represent an empty linked list.
+      self.head = None
+      self.tail = None
+      # Return value of the old tail element.
+      return tail.value
+    # Otherwise more than one element in doubly linked list.
+    else:
+      # Grab a second reference to our current tail element 
+      tail = self.tail
+      # Remove tail element from linked list and rearranges pointers for prev node.
+      self.tail.delete()
+      # Reassign tail pointer to prev node
+      self.tail = tail.prev
+      # Return value of old tail element.
+      return tail.value
 
   def move_to_front(self, node):
     pass
