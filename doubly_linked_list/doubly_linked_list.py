@@ -43,7 +43,28 @@ class DoublyLinkedList:
     pass
 
   def remove_from_head(self):
-    pass
+    # If linked list is empty return None.
+    if not self.head:
+      return None
+    # If only one element in the linked list (e.g. self.head.next == None).
+    elif not self.head.next:
+      # Grab a second reference to our current head element 
+      head = self.head
+      # Set head and tail to None to represent an empty linked list.
+      self.head = None
+      self.tail = None
+      # Return value of the old head element.
+      return head.value
+    # Otherwise more than one element in doubly linked list.
+    else:
+      # Grab a second reference to our current head element 
+      head = self.head
+      # Remove head element from linked list and rearranges pointers for next node.
+      self.head.delete()
+      # Reassign head to next node of the previous head.
+      self.head = head.next
+      # Return value of the old head element.
+      return head.value
 
   def add_to_tail(self, value):
     # Check if doubly linked list's head and tail are none.
