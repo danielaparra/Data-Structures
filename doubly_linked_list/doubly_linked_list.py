@@ -40,7 +40,17 @@ class DoublyLinkedList:
     self.tail = node
 
   def add_to_head(self, value):
-    pass
+    # Check if doubly linked list's head and tail are none.
+    if not self.head:
+      # Create new node and set as head and tail.
+      new_node = ListNode(value)
+      self.head = new_node
+      self.tail = new_node
+    else:
+      # If it has an existing tail, insert new node before it.
+      self.head.insert_before(value)
+      # Reassign head to newly inserted node.
+      self.head = self.head.prev
 
   def remove_from_head(self):
     # If linked list is empty return None.
