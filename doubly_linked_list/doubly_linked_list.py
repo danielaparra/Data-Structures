@@ -171,4 +171,14 @@ class DoublyLinkedList:
       node.delete()
     
   def get_max(self):
-    pass
+    # Set the current node to the head of the linked list and the max value to the head's value.
+    currNode = self.head
+    maxValue = self.head.value
+    # Traverse linked list.
+    while currNode is not None:
+      # If the current node's value is greater than the maxValue, update the maxValue.
+      if currNode.value > maxValue:
+        maxValue = currNode.value
+      currNode = currNode.next
+    # Return the max value after looking at all the nodes' values.
+    return maxValue
