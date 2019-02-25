@@ -145,7 +145,30 @@ class DoublyLinkedList:
       self.tail = newTail
 
   def delete(self, node):
-    pass
+    # If only one node in linked list
+    if not self.head.next:
+      # Set head and tail to None to represent an empty linked list.
+      self.head = None
+      self.tail = None
+    # If the node in question is the head.
+    elif node is self.head:
+      # Grab a second reference to the node's next node.
+      nextNode = node.next
+      # Delete the node.
+      node.delete()
+      # Reassign the head to the next node.
+      self.head = nextNode
+    # If the node in question is the tail.
+    elif node is self.tail:
+      # Grab a second reference to the node's prev node.
+      prevNode = node.prev
+      # Delete the node.
+      node.delete()
+      # Reassign the head to the next node.
+      self.tail = prevNode
+    # Otherwise just delete the node.
+    else:
+      node.delete()
     
   def get_max(self):
     pass
