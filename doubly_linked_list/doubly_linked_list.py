@@ -115,7 +115,19 @@ class DoublyLinkedList:
       return tail.value
 
   def move_to_front(self, node):
-    pass
+    # Check if linked list has more than one element or else do nothing.
+    if self.head.next:
+      # Grab a second reference to the node in question.
+      newHead = node
+      # Delete node and rearranges pointers for its prev and next nodes in the linked list.
+      node.delete()
+      # Reassign new head's prev and next nodes.
+      newHead.prev = None
+      newHead.next = self.head
+      # Reassign current head's previous node.
+      self.head.prev = newHead
+      # Reassign head to new head.
+      self.head = newHead
 
   def move_to_end(self, node):
     pass
