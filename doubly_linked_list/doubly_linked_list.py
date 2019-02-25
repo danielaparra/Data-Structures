@@ -46,7 +46,18 @@ class DoublyLinkedList:
     pass
 
   def add_to_tail(self, value):
-    pass
+    # Check if doubly linked list's head and tail are none.
+    if not self.head:
+      # Create new node and set as head and tail.
+      new_node = ListNode(value)
+      self.head = new_node
+      self.tail = new_node
+    else:
+      # If it has an existing tail, set after current tail.
+      self.tail.insert_after(value)
+      # Reassign tail to the new node.
+      self.tail = self.tail.next
+
 
   def remove_from_tail(self):
     pass
