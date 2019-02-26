@@ -61,5 +61,14 @@ class BinarySearchTree:
     else:
       self._containsRecursive(target, self.left)
 
+  def _get_max_recursively(self, curr_node):
+    if not curr_node.right:
+      return curr_node.value
+    else:
+      return self._get_max_recursively(curr_node.right)
+
   def get_max(self):
-    pass
+    if not self.right:
+      return self.value
+    else: 
+      return self._get_max_recursively(self.right)
