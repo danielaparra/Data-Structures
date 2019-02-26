@@ -36,8 +36,30 @@ class BinarySearchTree:
     else:
       self._insertRecursive(self.left, value)
 
+  def _containsRecursive(self, target, curr_node):
+    # If target equals current node value, return true.
+    if target == curr_node.value:
+      return True
+    # If search reaches a current node to None, it could not find target and return False.
+    elif curr_node is None:
+      return False
+    # If target is greater than current node value, recurse through right child.
+    elif target > curr_node.value:
+      return self._containsRecursive(target, curr_node.right)
+    # If target is less than current node value, recurse through left child.
+    else:
+      return self._containsRecursive(target, curr_node.left)
+
   def contains(self, target):
-    pass
+    # If target equals binary search tree root value, return true.
+    if target == self.value:
+      return True
+    # If target is greater than binary search tree root value, recurse through root's right child.
+    elif target > self.value:
+      self._containsRecursive(target, self.right)
+    # If target is less than binary search tree root value, recurse through root's left child.
+    else:
+      self._containsRecursive(target, self.left)
 
   def get_max(self):
     pass
