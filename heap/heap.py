@@ -23,7 +23,15 @@ class Heap:
     return len(self.storage) - 1
 
   def _bubble_up(self, index):
-    pass
+    # If value is at index 1, then it's at the top of the heap so do nothing more.
+    if index <= 1:
+      return
+    
+    # Get parent index of newly added value.
+    parent_index = index // 2
+    if self.storage[index] > self.storage[parent_index]:
+      self.storage[index], self.storage[parent_index] = self.storage[parent_index], self.storage[index]
+      self._bubble_up(parent_index)
 
   def _sift_down(self, index):
     pass
