@@ -51,13 +51,27 @@ class Heap:
       self._bubble_up(parent_index)
 
   def _sift_down(self, index):
+    count = self.get_size()
+
     # If index is already at the end of the array, do nothing more.
-    if index == self.get_size():
+    if index == count:
       return
     # Get indexes for left and right children ``
     left_child = index * 2
-    right_child = index * 2 + 1  
-    if self.storage[left_child] and self.storage[right_child]:
-      if 
-
+    right_child = index * 2 + 1 
+    # If heap has left and right child... 
+    if count >= right_child:
+      # Find out if right or left child is greater and save that index.
+      greater_child_index = left_child if self.storage[left_child] > self.storage[right_child] else right_child
+      # If child value is greater than the current index, swap values and sift down.
+      if self.storage[greater_child_index] > self.storage[index]:
+        self.storage[index], self.storage[greater_child_index] = self.storage[greater_child_index], self.storage[index]
+        self._sift_down(greater_child_index)
+    # If heap only has left child...
+    elif count >= left_child:
+      if self.storage[left_child] > self.storage[index]:
+        self.storage[index], self.storage[left_child] = self.storage[left_child], self.storage[index]
+        self._sift_down(left_child)
+    else:
+      return
 
