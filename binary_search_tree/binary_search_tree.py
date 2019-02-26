@@ -1,8 +1,8 @@
 class Node:
   def __init__(self,value=None):
     self.value = value
-    self.left_child = None
-    self.right_child = None
+    self.left = None
+    self.right = None
 
 class BinarySearchTree:
   def __init__(self, value):
@@ -11,7 +11,10 @@ class BinarySearchTree:
     self.right = None
 
   def insert(self, value):
-    pass
+    # If value added is greater than root value, add to the right.
+    if value > self.value:
+      new_node = Node(value)
+      
 
   def contains(self, target):
     pass
