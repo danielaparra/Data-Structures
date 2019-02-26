@@ -175,7 +175,7 @@ class DoublyLinkedList:
     currNode = self.head
     maxValue = self.head.value
     # Traverse linked list.
-    while currNode is not None:
+    while currNode:
       # If the current node's value is greater than the maxValue, update the maxValue.
       if currNode.value > maxValue:
         maxValue = currNode.value
