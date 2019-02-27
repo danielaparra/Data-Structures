@@ -1,6 +1,13 @@
+
+from doubly_linked_list import DoublyLinkedList
+
 class LRUCache:
   def __init__(self, limit=10):
-    pass
+    # Initialize a doubly linked list to hold order of items in cache.
+    self.dll = DoublyLinkedList()
+    # A dictionary to fetch values based on keys in the dll.
+    self.dictionary = dict()
+    self.limit = limit
 
   """
   Retrieves the value associated with the given key. Also
