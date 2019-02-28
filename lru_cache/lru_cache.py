@@ -18,10 +18,15 @@ class LRUCache:
   key-value pair doesn't exist in the cache. 
   """
   def get(self, key):
-    # If key doesn't exist return None and do nothing with doubly linked list.
+    # Fetch node for given key.
+    curr_node = self.dictionary.get(key)
+    
+    # If node does exist, move node to the front of doubly linked list.
+    if curr_node:
+      self.dll.move_to_front(curr_node)
 
-    # If key does exist, fetch Node
-    pass
+    # Return current node.
+    return curr_node
 
   """
   Adds the given key-value pair to the cache. The newly-
@@ -34,4 +39,22 @@ class LRUCache:
   the newly-specified value. 
   """
   def set(self, key, value):
-    pass
+    # Check if key exists in dictionary.
+    if key in self.dictionary:
+      # If so, update value of node in dictionary.
+      curr_node = self.dictionary[key]
+      self.dictionary[key] = value
+      # And move node to front of dll.
+      self.dll.move_to_front(curr_node)
+      return
+
+    # Check it dll is at max capacity and it's assumed key is not in dictionary. 
+    if len(self.dictionary) == self.limit:
+    # If dll is at limit, remove lru-est node from dll and dictionary.
+      self.dll.remove_from_tail()
+      self.dictionary.pop(key)
+    
+    # Otherwise, add new node with key and value to dll and dictionary.
+    # Bring node to the front of dll.
+    new_node = self.dll.add_to_head(key, value)
+    self.dictionary[key] = new_node

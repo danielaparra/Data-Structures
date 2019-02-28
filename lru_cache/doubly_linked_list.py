@@ -47,11 +47,13 @@ class DoublyLinkedList:
       new_node = ListNode(key, value)
       self.head = new_node
       self.tail = new_node
+      return new_node
     else:
       # If it has an existing tail, insert new node before it.
       self.head.insert_before(key, value)
       # Reassign head to newly inserted node.
       self.head = self.head.prev
+      return self.head
 
   def remove_from_head(self):
     # If linked list is empty return None.
