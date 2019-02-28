@@ -1,5 +1,6 @@
 
 from doubly_linked_list import DoublyLinkedList
+from doubly_linked_list import ListNode
 
 class LRUCache:
   def __init__(self, limit=10):
@@ -17,6 +18,9 @@ class LRUCache:
   key-value pair doesn't exist in the cache. 
   """
   def get(self, key):
+    # If key doesn't exist return None and do nothing with doubly linked list.
+
+    # If key does exist, fetch Node
     pass
 
   """
